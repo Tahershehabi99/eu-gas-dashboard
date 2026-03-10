@@ -438,13 +438,13 @@
                 <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="abs-change-header">Absolute</td></tr>
             </thead>
             <tbody>
-            <tr><td>1 Week</td><td style="color:#C00000; font-weight:bold; text-align:right;">-0.6%</td><td class="abs-change-cell" data-twh-change="342.4775" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>1 Month</td><td style="color:#C00000; font-weight:bold; text-align:right;">-8.0%</td><td class="abs-change-cell" data-twh-change="426.9288" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>3 Months</td><td style="color:#C00000; font-weight:bold; text-align:right;">-42.4%</td><td class="abs-change-cell" data-twh-change="820.2888" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>Since 1st Oct 2025</td><td style="color:#C00000; font-weight:bold; text-align:right;">-53.1%</td><td class="abs-change-cell" data-twh-change="940.0239" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>Since 1st Apr 2025</td><td style="color:#C00000; font-weight:bold; text-align:right;">-4.4%</td><td class="abs-change-cell" data-twh-change="387.5258" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>Year-on-Year</td><td style="color:#C00000; font-weight:bold; text-align:right;">-7.2%</td><td class="abs-change-cell" data-twh-change="420.6914" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
-<tr><td>vs 5-Year Avg</td><td style="color:#C00000; font-weight:bold; text-align:right;">-13.7%</td><td class="abs-change-cell" data-twh-change="487.6844" style="text-align:right; font-weight:bold; color:#272962;"></td></tr>
+            <tr><td>1 Week</td><td style="color:#C00000; font-weight:bold; text-align:right;">-0.6%</td><td class="abs-change-cell" data-twh-change="-6.5695" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>1 Month</td><td style="color:#C00000; font-weight:bold; text-align:right;">-8.0%</td><td class="abs-change-cell" data-twh-change="-91.0208" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>3 Months</td><td style="color:#C00000; font-weight:bold; text-align:right;">-42.4%</td><td class="abs-change-cell" data-twh-change="-484.3808" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>Since 1st Oct 2025</td><td style="color:#C00000; font-weight:bold; text-align:right;">-53.1%</td><td class="abs-change-cell" data-twh-change="-604.1159" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>Since 1st Apr 2025</td><td style="color:#C00000; font-weight:bold; text-align:right;">-4.4%</td><td class="abs-change-cell" data-twh-change="-51.6178" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>Year-on-Year</td><td style="color:#C00000; font-weight:bold; text-align:right;">-7.2%</td><td class="abs-change-cell" data-twh-change="-84.7834" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>vs 5-Year Avg</td><td style="color:#C00000; font-weight:bold; text-align:right;">-13.7%</td><td class="abs-change-cell" data-twh-change="-151.7764" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
 
             </tbody>
         </table>
@@ -945,12 +945,13 @@ function convertUnits() {
             const val = twh * u.stockFactor;
             const absVal = Math.abs(val);
             const dp = absVal < 10 ? 2 : absVal < 100 ? 1 : 0;
-            td.textContent = fmt(val, dp) + ' ' + u.stockLabel;
+            const sign = val >= 0 ? '+' : '';
+            td.textContent = sign + fmt(val, dp) + ' ' + u.stockLabel;
         } else {
             td.textContent = 'N/A';
         }
     });
-    document.getElementById('abs-change-header').textContent = 'Level (' + u.stockLabel + ')';
+    document.getElementById('abs-change-header').textContent = 'Change (' + u.stockLabel + ')';
 
     // Convert KPI stock values (data-twh attribute)
     ['kpi-storage', 'kpi-capacity'].forEach(id => {

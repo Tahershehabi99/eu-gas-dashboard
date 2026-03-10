@@ -12,125 +12,150 @@
         font-family: 'Gotham Book';
         src: url('Gotham-Book.otf') format('opentype');
     }
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
         font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
         background: #ffffff;
         padding: 30px;
         color: #272962;
     }
-    .chart-wrapper {
-        max-width: 1100px;
+    .page-layout {
+        display: flex;
+        gap: 30px;
+        max-width: 1500px;
         margin: 0 auto;
+        align-items: flex-start;
     }
-    .chart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+    .chart-side { flex: 1; min-width: 0; }
+    .tables-side { width: 380px; flex-shrink: 0; }
     .chart-title {
-        font-size: 18px;
-        color: #272962;
-        margin-bottom: 0;
-        font-weight: bold;
-        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 18px; color: #272962; margin-bottom: 0;
+        font-weight: bold; font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
     }
-    .controls {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .ctrl-label {
-        font-size: 13px;
-        color: #272962;
-    }
-    .ctrl-select {
-        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
-        font-size: 13px;
-        color: #272962;
-        border: 1px solid rgba(39, 41, 98, 0.3);
-        border-radius: 4px;
-        padding: 5px 10px;
-        background: #f8f8fb;
-        cursor: pointer;
-    }
-    canvas {
-        width: 100% !important;
-    }
+    canvas { width: 100% !important; }
     .custom-legend {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        margin-top: 15px;
-        flex-wrap: wrap;
+        display: flex; justify-content: center; gap: 25px;
+        margin-top: 15px; flex-wrap: wrap;
     }
     .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+        display: flex; align-items: center; gap: 6px;
         font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
-        font-size: 14px;
-        color: #272962;
+        font-size: 14px; color: #272962;
     }
-    .legend-line {
-        width: 25px;
-        height: 0;
-        border-top: 3px solid;
+    .legend-line { width: 25px; height: 0; border-top: 3px solid; }
+    .legend-rect { width: 25px; height: 12px; background: rgba(147,149,162,0.3); border: 1px solid rgba(147,149,162,0.5); }
+
+    .summary-card {
+        background: #f8f8fb; border: 1px solid rgba(39,41,98,0.15);
+        border-radius: 6px; padding: 18px; margin-bottom: 20px;
     }
-    .legend-rect {
-        width: 25px;
-        height: 12px;
-        background: rgba(147, 149, 162, 0.3);
-        border: 1px solid rgba(147, 149, 162, 0.5);
+    .summary-card h3 {
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 16px; color: #272962; margin-bottom: 12px;
+        font-weight: bold; border-bottom: 2px solid #272962; padding-bottom: 6px;
+    }
+    .summary-table {
+        width: 100%; border-collapse: collapse;
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 13px; color: #272962;
+    }
+    .summary-table td {
+        padding: 5px 8px; border-bottom: 1px solid rgba(39,41,98,0.08);
     }
 
+    .page-header {
+        max-width: 1500px; margin: 0 auto 15px auto;
+        display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+    }
+    .ctrl-label { font-size: 13px; color: #272962; }
+    .ctrl-select {
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 13px; color: #272962;
+        border: 1px solid rgba(39,41,98,0.3); border-radius: 4px;
+        padding: 5px 10px; background: #f8f8fb; cursor: pointer;
+    }
+
+    .bottom-section { max-width: 1500px; margin: 25px auto 0 auto; }
+    .daily-table {
+        width: 100%; border-collapse: collapse;
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 13px; color: #272962;
+    }
+    .daily-table th {
+        font-size: 13px; font-weight: bold; text-align: center;
+        padding: 5px 4px; white-space: nowrap;
+    }
+    .daily-table .row-header {
+        text-align: left; font-weight: bold; padding-right: 12px;
+        white-space: nowrap; background: #f8f8fb; border-right: 2px solid #272962;
+    }
+    .daily-table td {
+        padding: 4px 4px; text-align: center;
+        border-bottom: 1px solid rgba(39,41,98,0.08);
+    }
+    .daily-table thead th { border-bottom: 2px solid #272962; }
+    .daily-table .latest-col { background: rgba(192,0,0,0.06); font-weight: bold; }
+
+    .desktop-only { display: block; }
+    .mobile-only { display: none; }
+    .vert-daily-table {
+        width: 100%; border-collapse: collapse;
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 13px; color: #272962;
+    }
+    .vert-daily-table th {
+        font-size: 13px; font-weight: bold; text-align: right;
+        padding: 5px 8px; border-bottom: 2px solid #272962;
+    }
+    .vert-daily-table th:first-child { text-align: left; }
+    .vert-daily-table td {
+        padding: 4px 8px; text-align: right;
+        border-bottom: 1px solid rgba(39,41,98,0.08);
+    }
+    .vert-daily-table td:first-child { text-align: left; }
+    .vert-daily-table tr.latest-col td { font-weight: bold; background: rgba(192,0,0,0.06); }
+
     @media (max-width: 900px) {
-        body {
-            padding: 12px;
-        }
-        .chart-title {
-            font-size: 15px;
-        }
-        .controls {
-            width: 100%;
-        }
-        .ctrl-select {
-            flex: 1;
-        }
-        .legend-item {
-            font-size: 11px;
-        }
+        body { padding: 12px; }
+        .desktop-only { display: none !important; }
+        .mobile-only { display: block !important; }
+        .page-layout { flex-direction: column; gap: 15px; }
+        .tables-side { width: 100%; }
+        .page-header { flex-direction: column; align-items: stretch; gap: 8px; }
+        .chart-title { font-size: 15px; }
+        .custom-legend { gap: 12px; }
+        .legend-item { font-size: 11px; }
+        .summary-card { padding: 12px; overflow-x: auto; }
+    }
+    @media (max-width: 500px) {
+        .chart-title { font-size: 13px; }
+        .legend-item { font-size: 10px; }
+        .legend-line { width: 18px; }
+        .legend-rect { width: 18px; height: 10px; }
     }
 </style>
 </head>
 <body>
-<div class="chart-wrapper">
-    <div style="text-align:center; margin-bottom:20px;">
-        <img src="Palissy%20Logo.png" alt="Palissy Advisors" style="height:100px; max-width:90%; object-fit:contain;">
-    </div>
-    <div class="controls" style="justify-content:flex-end; margin-bottom:10px;">
-        <span class="ctrl-label">Period:</span>
-        <select id="periodSelector" class="ctrl-select" onchange="rebuildChart()">
-            <option value="daily" selected>Daily</option>
-            <option value="monthly">Monthly</option>
-        </select>
-        <span class="ctrl-label">Display units:</span>
-        <select id="unitSelector" class="ctrl-select" onchange="rebuildChart()">
-            <option value="bcf" selected>bcf/d</option>
-            <option value="bcm">mcm/d</option>
-            <option value="twh">GWh/d</option>
-            <option value="mmt">kt/d</option>
-        </select>
-    </div>
-    <div class="chart-header">
+<div style="text-align:center; margin-bottom:20px; max-width:1500px; margin-left:auto; margin-right:auto;">
+    <img src="Palissy%20Logo.png" alt="Palissy Advisors" style="height:100px; max-width:90%; object-fit:contain;">
+</div>
+<div class="page-header">
+    <span class="ctrl-label">Period:</span>
+    <select id="periodSelector" class="ctrl-select" onchange="rebuildChart()">
+        <option value="daily" selected>Daily</option>
+        <option value="monthly">Monthly</option>
+    </select>
+    <span class="ctrl-label">Display units:</span>
+    <select id="unitSelector" class="ctrl-select" onchange="convertUnits()">
+        <option value="bcf" selected>bcf/d</option>
+        <option value="bcm">mcm/d</option>
+        <option value="twh">GWh/d</option>
+        <option value="mmt">kt/d</option>
+    </select>
+</div>
+<div class="page-layout">
+<div class="chart-side">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
         <div class="chart-title">EU LNG Sendout, Source: GIE ALSI</div>
         <select id="rangeSelector" class="ctrl-select" onchange="rebuildChart()">
             <option value="3">3-year range</option>
@@ -152,6 +177,75 @@
         <div class="legend-item"><div class="legend-line" style="border-color: #C00000;"></div>GY25/26</div>
     </div>
 </div>
+<div class="tables-side">
+    <div class="summary-card">
+        <h3>EU LNG Sendout Changes</h3>
+        <div style="text-align:center; font-size:13px; color:#9395A2; margin-bottom:10px;">
+            As of 09 Mar 2026
+        </div>
+        <table class="summary-table">
+            <thead>
+                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="change-header">Change</td></tr>
+            </thead>
+            <tbody>
+            <tr><td>1 Week</td><td class="sendout-change-cell" data-gwh-change="-61.6000" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>1 Month</td><td class="sendout-change-cell" data-gwh-change="569.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>3 Months</td><td class="sendout-change-cell" data-gwh-change="896.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Since 1st Oct 2025</td><td class="sendout-change-cell" data-gwh-change="492.4000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Since 1st Apr 2025</td><td class="sendout-change-cell" data-gwh-change="127.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Year-on-Year</td><td class="sendout-change-cell" data-gwh-change="1029.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>vs 5-Year Avg</td><td class="sendout-change-cell" data-gwh-change="1333.8600" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<!-- Last 14 Days — DESKTOP horizontal -->
+<div class="bottom-section desktop-only">
+    <div class="summary-card">
+        <h3>Last 14 Days</h3>
+        <table class="daily-table">
+            <thead>
+                <tr><th class="row-header"></th><th>24 Feb</th><th>25 Feb</th><th>26 Feb</th><th>27 Feb</th><th>28 Feb</th><th>01 Mar</th><th>02 Mar</th><th>03 Mar</th><th>04 Mar</th><th>05 Mar</th><th>06 Mar</th><th>07 Mar</th><th>08 Mar</th><th class="latest-col">09 Mar</th></tr>
+            </thead>
+            <tbody>
+                <tr id="daily-sendout-row"><td class="row-header" id="daily-sendout-label">Sendout</td><td data-gwh-daily="4793.5"></td><td data-gwh-daily="4903.4"></td><td data-gwh-daily="5180.4"></td><td data-gwh-daily="5001.2"></td><td data-gwh-daily="5100.8"></td><td data-gwh-daily="4558.1"></td><td data-gwh-daily="4816.4"></td><td data-gwh-daily="5086.4"></td><td data-gwh-daily="5142.1"></td><td data-gwh-daily="4963.1"></td><td data-gwh-daily="4901.5"></td><td data-gwh-daily="4837.7"></td><td data-gwh-daily="4735.9"></td><td class="latest-col" data-gwh-daily="4754.8"></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Last 14 Days — MOBILE vertical -->
+<div class="bottom-section mobile-only">
+    <div class="summary-card">
+        <h3>Last 14 Days</h3>
+        <table class="vert-daily-table">
+            <thead>
+                <tr><th>Date</th><th id="vert-sendout-label">Sendout</th></tr>
+            </thead>
+            <tbody>
+                <tr class="latest-col"><td style="font-weight:bold;">09 Mar</td><td data-gwh-daily-vert="4754.8"></td></tr>
+<tr><td style="font-weight:bold;">08 Mar</td><td data-gwh-daily-vert="4735.9"></td></tr>
+<tr><td style="font-weight:bold;">07 Mar</td><td data-gwh-daily-vert="4837.7"></td></tr>
+<tr><td style="font-weight:bold;">06 Mar</td><td data-gwh-daily-vert="4901.5"></td></tr>
+<tr><td style="font-weight:bold;">05 Mar</td><td data-gwh-daily-vert="4963.1"></td></tr>
+<tr><td style="font-weight:bold;">04 Mar</td><td data-gwh-daily-vert="5142.1"></td></tr>
+<tr><td style="font-weight:bold;">03 Mar</td><td data-gwh-daily-vert="5086.4"></td></tr>
+<tr><td style="font-weight:bold;">02 Mar</td><td data-gwh-daily-vert="4816.4"></td></tr>
+<tr><td style="font-weight:bold;">01 Mar</td><td data-gwh-daily-vert="4558.1"></td></tr>
+<tr><td style="font-weight:bold;">28 Feb</td><td data-gwh-daily-vert="5100.8"></td></tr>
+<tr><td style="font-weight:bold;">27 Feb</td><td data-gwh-daily-vert="5001.2"></td></tr>
+<tr><td style="font-weight:bold;">26 Feb</td><td data-gwh-daily-vert="5180.4"></td></tr>
+<tr><td style="font-weight:bold;">25 Feb</td><td data-gwh-daily-vert="4903.4"></td></tr>
+<tr><td style="font-weight:bold;">24 Feb</td><td data-gwh-daily-vert="4793.5"></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <script>
 const xDates = ["2001-10-01", "2001-10-02", "2001-10-03", "2001-10-04", "2001-10-05", "2001-10-06", "2001-10-07", "2001-10-08", "2001-10-09", "2001-10-10", "2001-10-11", "2001-10-12", "2001-10-13", "2001-10-14", "2001-10-15", "2001-10-16", "2001-10-17", "2001-10-18", "2001-10-19", "2001-10-20", "2001-10-21", "2001-10-22", "2001-10-23", "2001-10-24", "2001-10-25", "2001-10-26", "2001-10-27", "2001-10-28", "2001-10-29", "2001-10-30", "2001-10-31", "2001-11-01", "2001-11-02", "2001-11-03", "2001-11-04", "2001-11-05", "2001-11-06", "2001-11-07", "2001-11-08", "2001-11-09", "2001-11-10", "2001-11-11", "2001-11-12", "2001-11-13", "2001-11-14", "2001-11-15", "2001-11-16", "2001-11-17", "2001-11-18", "2001-11-19", "2001-11-20", "2001-11-21", "2001-11-22", "2001-11-23", "2001-11-24", "2001-11-25", "2001-11-26", "2001-11-27", "2001-11-28", "2001-11-29", "2001-11-30", "2001-12-01", "2001-12-02", "2001-12-03", "2001-12-04", "2001-12-05", "2001-12-06", "2001-12-07", "2001-12-08", "2001-12-09", "2001-12-10", "2001-12-11", "2001-12-12", "2001-12-13", "2001-12-14", "2001-12-15", "2001-12-16", "2001-12-17", "2001-12-18", "2001-12-19", "2001-12-20", "2001-12-21", "2001-12-22", "2001-12-23", "2001-12-24", "2001-12-25", "2001-12-26", "2001-12-27", "2001-12-28", "2001-12-29", "2001-12-30", "2001-12-31", "2002-01-01", "2002-01-02", "2002-01-03", "2002-01-04", "2002-01-05", "2002-01-06", "2002-01-07", "2002-01-08", "2002-01-09", "2002-01-10", "2002-01-11", "2002-01-12", "2002-01-13", "2002-01-14", "2002-01-15", "2002-01-16", "2002-01-17", "2002-01-18", "2002-01-19", "2002-01-20", "2002-01-21", "2002-01-22", "2002-01-23", "2002-01-24", "2002-01-25", "2002-01-26", "2002-01-27", "2002-01-28", "2002-01-29", "2002-01-30", "2002-01-31", "2002-02-01", "2002-02-02", "2002-02-03", "2002-02-04", "2002-02-05", "2002-02-06", "2002-02-07", "2002-02-08", "2002-02-09", "2002-02-10", "2002-02-11", "2002-02-12", "2002-02-13", "2002-02-14", "2002-02-15", "2002-02-16", "2002-02-17", "2002-02-18", "2002-02-19", "2002-02-20", "2002-02-21", "2002-02-22", "2002-02-23", "2002-02-24", "2002-02-25", "2002-02-26", "2002-02-27", "2002-02-28", "2002-03-01", "2002-03-02", "2002-03-03", "2002-03-04", "2002-03-05", "2002-03-06", "2002-03-07", "2002-03-08", "2002-03-09", "2002-03-10", "2002-03-11", "2002-03-12", "2002-03-13", "2002-03-14", "2002-03-15", "2002-03-16", "2002-03-17", "2002-03-18", "2002-03-19", "2002-03-20", "2002-03-21", "2002-03-22", "2002-03-23", "2002-03-24", "2002-03-25", "2002-03-26", "2002-03-27", "2002-03-28", "2002-03-29", "2002-03-30", "2002-03-31", "2002-04-01", "2002-04-02", "2002-04-03", "2002-04-04", "2002-04-05", "2002-04-06", "2002-04-07", "2002-04-08", "2002-04-09", "2002-04-10", "2002-04-11", "2002-04-12", "2002-04-13", "2002-04-14", "2002-04-15", "2002-04-16", "2002-04-17", "2002-04-18", "2002-04-19", "2002-04-20", "2002-04-21", "2002-04-22", "2002-04-23", "2002-04-24", "2002-04-25", "2002-04-26", "2002-04-27", "2002-04-28", "2002-04-29", "2002-04-30", "2002-05-01", "2002-05-02", "2002-05-03", "2002-05-04", "2002-05-05", "2002-05-06", "2002-05-07", "2002-05-08", "2002-05-09", "2002-05-10", "2002-05-11", "2002-05-12", "2002-05-13", "2002-05-14", "2002-05-15", "2002-05-16", "2002-05-17", "2002-05-18", "2002-05-19", "2002-05-20", "2002-05-21", "2002-05-22", "2002-05-23", "2002-05-24", "2002-05-25", "2002-05-26", "2002-05-27", "2002-05-28", "2002-05-29", "2002-05-30", "2002-05-31", "2002-06-01", "2002-06-02", "2002-06-03", "2002-06-04", "2002-06-05", "2002-06-06", "2002-06-07", "2002-06-08", "2002-06-09", "2002-06-10", "2002-06-11", "2002-06-12", "2002-06-13", "2002-06-14", "2002-06-15", "2002-06-16", "2002-06-17", "2002-06-18", "2002-06-19", "2002-06-20", "2002-06-21", "2002-06-22", "2002-06-23", "2002-06-24", "2002-06-25", "2002-06-26", "2002-06-27", "2002-06-28", "2002-06-29", "2002-06-30", "2002-07-01", "2002-07-02", "2002-07-03", "2002-07-04", "2002-07-05", "2002-07-06", "2002-07-07", "2002-07-08", "2002-07-09", "2002-07-10", "2002-07-11", "2002-07-12", "2002-07-13", "2002-07-14", "2002-07-15", "2002-07-16", "2002-07-17", "2002-07-18", "2002-07-19", "2002-07-20", "2002-07-21", "2002-07-22", "2002-07-23", "2002-07-24", "2002-07-25", "2002-07-26", "2002-07-27", "2002-07-28", "2002-07-29", "2002-07-30", "2002-07-31", "2002-08-01", "2002-08-02", "2002-08-03", "2002-08-04", "2002-08-05", "2002-08-06", "2002-08-07", "2002-08-08", "2002-08-09", "2002-08-10", "2002-08-11", "2002-08-12", "2002-08-13", "2002-08-14", "2002-08-15", "2002-08-16", "2002-08-17", "2002-08-18", "2002-08-19", "2002-08-20", "2002-08-21", "2002-08-22", "2002-08-23", "2002-08-24", "2002-08-25", "2002-08-26", "2002-08-27", "2002-08-28", "2002-08-29", "2002-08-30", "2002-08-31", "2002-09-01", "2002-09-02", "2002-09-03", "2002-09-04", "2002-09-05", "2002-09-06", "2002-09-07", "2002-09-08", "2002-09-09", "2002-09-10", "2002-09-11", "2002-09-12", "2002-09-13", "2002-09-14", "2002-09-15", "2002-09-16", "2002-09-17", "2002-09-18", "2002-09-19", "2002-09-20", "2002-09-21", "2002-09-22", "2002-09-23", "2002-09-24", "2002-09-25", "2002-09-26", "2002-09-27", "2002-09-28", "2002-09-29", "2002-09-30", "2002-10-01"];
 const currentData = [4262.40,3801.90,3773.20,4261.80,3896.80,3798.40,4408.60,4422.40,4238.10,4243.70,4363.10,4223.00,4100.10,4176.40,4512.40,4358.10,4456.00,4613.10,4187.20,3970.90,4171.90,4105.70,4196.80,4113.90,4260.40,3824.20,3586.40,4272.20,4382.20,4661.80,4711.20,4634.20,4146.20,4251.50,4437.80,4326.60,4309.20,4406.10,4615.50,4262.70,4213.60,4615.50,4582.40,4429.10,4210.30,4216.30,3957.70,4056.20,4581.00,4553.50,4599.20,4663.70,4418.10,4199.90,3962.40,4403.20,4282.30,4255.90,4269.00,4357.20,3870.30,3913.00,4360.20,4325.60,4175.30,4041.30,4079.50,3608.60,3604.80,3858.60,4129.50,4666.40,4663.20,4602.20,4182.20,4048.60,4470.60,4819.30,4835.90,4718.60,4887.40,4130.40,4085.70,4304.30,4267.00,3786.90,3775.60,4067.50,4126.30,4145.00,4081.70,4208.90,4563.40,3959.30,3920.60,3903.30,4028.10,4457.40,4179.10,4437.50,4312.80,3909.20,3831.80,4010.20,4464.50,4706.20,5097.90,4929.20,4985.20,4488.90,4271.60,4635.90,4068.00,4262.90,4463.70,3940.20,3875.70,3836.20,4316.70,4294.70,4404.90,4188.10,4053.50,3873.60,4006.10,4367.00,3836.40,3889.40,4128.80,4185.60,3996.10,3992.30,4427.10,4320.20,4029.90,4066.90,4192.80,3892.90,4041.30,4347.40,4539.60,4559.80,4699.00,4679.90,4540.10,4651.00,4793.50,4903.40,5180.40,5001.20,5100.80,4558.10,4816.40,5086.40,5142.10,4963.10,4901.50,4837.70,4735.90,4754.80,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
@@ -164,7 +258,6 @@ const lastDateStr = '09 Mar';
 const FONT_FAMILY = "'Gotham Book', 'Segoe UI', Calibri, sans-serif";
 const TEXT_COLOR = '#272962';
 
-// Unit conversion factors (from GWh/d base)
 const UNIT_CFG = {
     bcf:  { factor: 0.00341,               label: 'bcf/d',  decimals: 2 },
     bcm:  { factor: 0.00341 / 35.315 * 1000, label: 'mcm/d', decimals: 1 },
@@ -174,7 +267,6 @@ const UNIT_CFG = {
 
 let lngChart = null;
 
-// Month boundaries within the gas year (day-of-gas-year indices)
 const GY_MONTHS = [
     { start: 0,   end: 30,  xDate: '2001-10-15' },
     { start: 31,  end: 60,  xDate: '2001-11-15' },
@@ -292,7 +384,6 @@ function rebuildChart() {
         useCurrent = toMonthlyAvg(currentData);
         usePrev = toMonthlyAvg(prevData);
         usePrev2 = toMonthlyAvg(prev2Data);
-        // Find last non-null month for current GY
         let lastIdx = -1;
         for (let m = 11; m >= 0; m--) { if (useCurrent[m] !== null) { lastIdx = m; break; } }
         lastPtX = lastIdx >= 0 ? monthlyXDates[lastIdx] : '2002-03-09';
@@ -312,68 +403,44 @@ function rebuildChart() {
         {
             label: rangeLabel,
             data: convertArray(useMax, f).map((v, i) => ({x: useXDates[i], y: v})),
-            borderColor: 'rgba(147, 149, 162, 0.0)',
-            backgroundColor: 'rgba(147, 149, 162, 0.25)',
-            fill: '+1',
-            borderWidth: 0,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 6
+            borderColor: 'rgba(147,149,162,0.0)',
+            backgroundColor: 'rgba(147,149,162,0.25)',
+            fill: '+1', borderWidth: 0, pointRadius: 0, tension: 0.3, order: 6
         },
         {
             label: '_range_lower',
             data: convertArray(useMin, f).map((v, i) => ({x: useXDates[i], y: v})),
-            borderColor: 'rgba(147, 149, 162, 0.0)',
+            borderColor: 'rgba(147,149,162,0.0)',
             backgroundColor: 'transparent',
-            fill: false,
-            borderWidth: 0,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 6
+            fill: false, borderWidth: 0, pointRadius: 0, tension: 0.3, order: 6
         },
         {
             label: avgLabel,
             data: convertArray(useAvg, f).map((v, i) => ({x: useXDates[i], y: v})),
             borderColor: '#272962',
             backgroundColor: 'transparent',
-            fill: false,
-            borderWidth: 3,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 3
+            fill: false, borderWidth: 3, pointRadius: 0, tension: 0.3, order: 3
         },
         {
             label: 'GY23/24',
             data: convertArray(usePrev2, f).map((v, i) => ({x: useXDates[i], y: v})),
             borderColor: '#539648',
             backgroundColor: 'transparent',
-            fill: false,
-            borderWidth: 3,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 4
+            fill: false, borderWidth: 3, pointRadius: 0, tension: 0.3, order: 4
         },
         {
             label: 'GY24/25',
             data: convertArray(usePrev, f).map((v, i) => ({x: useXDates[i], y: v})),
             borderColor: '#0C5B19',
             backgroundColor: 'transparent',
-            fill: false,
-            borderWidth: 3,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 2
+            fill: false, borderWidth: 3, pointRadius: 0, tension: 0.3, order: 2
         },
         {
             label: 'GY25/26',
             data: convertArray(useCurrent, f).map((v, i) => ({x: useXDates[i], y: v})),
             borderColor: '#C00000',
             backgroundColor: 'transparent',
-            fill: false,
-            borderWidth: 3,
-            pointRadius: 0,
-            tension: 0.3,
-            order: 1
+            fill: false, borderWidth: 3, pointRadius: 0, tension: 0.3, order: 1
         },
         {
             label: '_lastpoint',
@@ -382,14 +449,11 @@ function rebuildChart() {
             backgroundColor: '#C00000',
             pointRadius: useXDates.map(x => x === lastPtX ? 6 : 0),
             pointHoverRadius: useXDates.map(x => x === lastPtX ? 7 : 0),
-            showLine: false,
-            order: 0
+            showLine: false, order: 0
         }
     ];
 
-    if (lngChart) {
-        lngChart.destroy();
-    }
+    if (lngChart) { lngChart.destroy(); }
 
     const ctx = document.getElementById('lngChart').getContext('2d');
     lngChart = new Chart(ctx, {
@@ -399,14 +463,9 @@ function rebuildChart() {
             responsive: true,
             maintainAspectRatio: true,
             aspectRatio: 2.2,
-            interaction: {
-                mode: 'index',
-                intersect: false
-            },
+            interaction: { mode: 'index', intersect: false },
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
                     callbacks: {
                         title: function(items) {
@@ -414,9 +473,7 @@ function rebuildChart() {
                                 const d = new Date(items[0].parsed.x);
                                 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
                                 const longMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                                if (isMonthly) {
-                                    return longMonths[d.getUTCMonth()];
-                                }
+                                if (isMonthly) { return longMonths[d.getUTCMonth()]; }
                                 return d.getUTCDate() + ' ' + months[d.getUTCMonth()];
                             }
                             return '';
@@ -427,14 +484,11 @@ function rebuildChart() {
                             if (context.parsed.y === null) return null;
                             const lbl = context.dataset.label;
                             const valStr = fmt(context.parsed.y, uc.decimals) + ' ' + uc.label;
-                            // For current GY last month in monthly mode, show actual date
                             if (isMonthly && lbl === 'GY25/26') {
                                 const convArr = convertArray(useCurrent, f);
                                 const isLastPt = context.dataIndex === convArr.length - 1 ||
                                     (context.dataIndex < convArr.length - 1 && convArr[context.dataIndex + 1] === null);
-                                if (isLastPt) {
-                                    return lbl + ' (01-' + lastDateStr + ' avg): ' + valStr;
-                                }
+                                if (isLastPt) { return lbl + ' (01-' + lastDateStr + ' avg): ' + valStr; }
                             }
                             return lbl + ': ' + valStr;
                         }
@@ -450,63 +504,74 @@ function rebuildChart() {
             scales: {
                 x: {
                     type: 'time',
-                    time: {
-                        unit: 'month',
-                        displayFormats: {
-                            month: 'MMM'
-                        }
-                    },
-                    min: '2001-10-01',
-                    max: '2002-09-30',
-                    ticks: {
-                        maxTicksLimit: 12,
-                        font: {
-                            family: FONT_FAMILY,
-                            size: 14
-                        },
-                        color: TEXT_COLOR
-                    },
-                    grid: {
-                        display: false
-                    },
-                    border: {
-                        color: TEXT_COLOR
-                    }
+                    time: { unit: 'month', displayFormats: { month: 'MMM' } },
+                    min: '2001-10-01', max: '2002-09-30',
+                    ticks: { maxTicksLimit: 12, font: { family: FONT_FAMILY, size: 14 }, color: TEXT_COLOR },
+                    grid: { display: false },
+                    border: { color: TEXT_COLOR }
                 },
                 y: {
-                    title: {
-                        display: true,
-                        text: uc.label,
-                        font: {
-                            family: FONT_FAMILY,
-                            size: 14
-                        },
-                        color: TEXT_COLOR
-                    },
+                    title: { display: true, text: uc.label, font: { family: FONT_FAMILY, size: 14 }, color: TEXT_COLOR },
                     ticks: {
-                        callback: function(value) {
-                            return Math.round(value).toLocaleString('en-US');
-                        },
-                        font: {
-                            family: FONT_FAMILY,
-                            size: 14
-                        },
-                        color: TEXT_COLOR
+                        callback: function(value) { return Math.round(value).toLocaleString('en-US'); },
+                        font: { family: FONT_FAMILY, size: 14 }, color: TEXT_COLOR
                     },
-                    grid: {
-                        color: 'rgba(39, 41, 98, 1.0)'
-                    },
-                    border: {
-                        color: TEXT_COLOR
-                    }
+                    grid: { color: 'rgba(39,41,98,1.0)' },
+                    border: { color: TEXT_COLOR }
                 }
             }
         }
     });
 }
 
-// Build chart on page load
-rebuildChart();
+// ========== UNIT CONVERSION ENGINE ==========
+function convertUnits() {
+    const unit = document.getElementById('unitSelector').value;
+    const uc = UNIT_CFG[unit];
+    const f = uc.factor;
+
+    rebuildChart();
+
+    // Convert sendout change cells
+    document.querySelectorAll('.sendout-change-cell').forEach(td => {
+        const gwh = parseFloat(td.dataset.gwhChange);
+        if (!isNaN(gwh)) {
+            const val = gwh * f;
+            const absVal = Math.abs(val);
+            const dp = absVal < 0.1 ? 3 : absVal < 1 ? 2 : absVal < 10 ? 2 : absVal < 100 ? 1 : 0;
+            const sign = val >= 0 ? '+' : '';
+            td.textContent = sign + fmt(val, dp) + ' ' + uc.label;
+        } else {
+            td.textContent = 'N/A';
+        }
+    });
+    document.getElementById('change-header').textContent = 'Change (' + uc.label + ')';
+
+    // Convert daily table sendout cells
+    document.querySelectorAll('#daily-sendout-row td[data-gwh-daily]').forEach(td => {
+        const gwh = parseFloat(td.dataset.gwhDaily);
+        if (!isNaN(gwh)) {
+            td.textContent = fmt(gwh * f, uc.decimals);
+        } else {
+            td.textContent = '-';
+        }
+    });
+    document.getElementById('daily-sendout-label').textContent = 'Sendout (' + uc.label + ')';
+
+    // Convert vertical (mobile) table cells
+    document.querySelectorAll('td[data-gwh-daily-vert]').forEach(td => {
+        const gwh = parseFloat(td.dataset.gwhDailyVert);
+        if (!isNaN(gwh)) {
+            td.textContent = fmt(gwh * f, uc.decimals);
+        } else {
+            td.textContent = '-';
+        }
+    });
+    document.getElementById('vert-sendout-label').textContent = 'Sendout (' + uc.label + ')';
+}
+
+// Initialize
+convertUnits();
 </script>
 </body>
 </html>
