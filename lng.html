@@ -177,11 +177,16 @@
     <img src="Palissy%20Logo.png" alt="Palissy Advisors" style="height:100px; max-width:90%; object-fit:contain;">
 </div>
 <div class="page-header">
-    <span class="ctrl-label" style="font-weight:bold;">Chart View:</span>
-    <select id="chartViewSelector" class="view-select" onchange="onViewChange()">
-        <option value="pct" selected>LNG Inventory Fill %</option>
-        <option value="abs">LNG Inventory (Absolute)</option>
-        <option value="sendout">LNG Sendout</option>
+    <span class="ctrl-label">Average Range:</span>
+    <select id="rangeSelector" class="ctrl-select" onchange="rebuildChart()">
+        <option value="3">3-year</option>
+        <option value="4">4-year</option>
+        <option value="5" selected>5-year</option>
+        <option value="6">6-year</option>
+        <option value="7">7-year</option>
+        <option value="8">8-year</option>
+        <option value="9">9-year</option>
+        <option value="10">10-year</option>
     </select>
     <span class="ctrl-label">Period:</span>
     <select id="periodSelector" class="ctrl-select" onchange="rebuildChart()">
@@ -200,15 +205,10 @@
 <div class="chart-side">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
         <div class="chart-title" id="chartTitle">LNG Inventory Fill Level, Source: GIE ALSI</div>
-        <select id="rangeSelector" class="ctrl-select" onchange="rebuildChart()">
-            <option value="3">3-year range</option>
-            <option value="4">4-year range</option>
-            <option value="5" selected>5-year range</option>
-            <option value="6">6-year range</option>
-            <option value="7">7-year range</option>
-            <option value="8">8-year range</option>
-            <option value="9">9-year range</option>
-            <option value="10">10-year range</option>
+        <select id="chartViewSelector" class="view-select" onchange="onViewChange()">
+            <option value="pct" selected>LNG Inventory Fill %</option>
+            <option value="abs">LNG Inventory (Absolute)</option>
+            <option value="sendout">LNG Sendout</option>
         </select>
     </div>
     <canvas id="lngChart"></canvas>
@@ -230,7 +230,7 @@
         <div class="kpi-grid">
             <div class="kpi-item kpi-wide">
                 <div class="kpi-label">LNG Inventory Fill Level</div>
-                <div class="kpi-value highlight">55.70%</div>
+                <div class="kpi-value" style="font-size:26px; color:#0C5B19;">55.70%</div>
             </div>
             <div class="kpi-item">
                 <div class="kpi-label">LNG in Storage</div>
@@ -255,7 +255,7 @@
         <h3>LNG Inventory Changes</h3>
         <table class="summary-table">
             <thead>
-                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="abs-inv-change-header">Absolute</td></tr>
+                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change (%)</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="abs-inv-change-header">Absolute</td></tr>
             </thead>
             <tbody>
             <tr><td>1 Week</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+0.5%</td><td class="abs-inv-change-cell" data-gwh-inv-change="338.8500" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
@@ -275,16 +275,16 @@
         <h3>EU LNG Sendout Changes</h3>
         <table class="summary-table">
             <thead>
-                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="so-change-header">Change</td></tr>
+                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change (%)</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="so-change-header">Absolute</td></tr>
             </thead>
             <tbody>
-            <tr><td>1 Week</td><td class="sendout-change-cell" data-gwh-so-change="-61.6000" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
-<tr><td>1 Month</td><td class="sendout-change-cell" data-gwh-so-change="569.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
-<tr><td>3 Months</td><td class="sendout-change-cell" data-gwh-so-change="896.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
-<tr><td>Since 1st Oct 2025</td><td class="sendout-change-cell" data-gwh-so-change="492.4000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
-<tr><td>Since 1st Apr 2025</td><td class="sendout-change-cell" data-gwh-so-change="127.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
-<tr><td>Year-on-Year</td><td class="sendout-change-cell" data-gwh-so-change="1029.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
-<tr><td>vs 5-Year Avg</td><td class="sendout-change-cell" data-gwh-so-change="1333.8600" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+            <tr><td>1 Week</td><td style="color:#C00000; font-weight:bold; text-align:right;">-1.3%</td><td class="sendout-change-cell" data-gwh-so-change="-61.6000" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
+<tr><td>1 Month</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+13.6%</td><td class="sendout-change-cell" data-gwh-so-change="569.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>3 Months</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+23.2%</td><td class="sendout-change-cell" data-gwh-so-change="896.2000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Since 1st Oct 2025</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+11.6%</td><td class="sendout-change-cell" data-gwh-so-change="492.4000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Since 1st Apr 2025</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+2.8%</td><td class="sendout-change-cell" data-gwh-so-change="127.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>Year-on-Year</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+27.6%</td><td class="sendout-change-cell" data-gwh-so-change="1029.3000" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
+<tr><td>vs 5-Year Avg</td><td style="color:#0C5B19; font-weight:bold; text-align:right;">+39.0%</td><td class="sendout-change-cell" data-gwh-so-change="1333.8600" style="text-align:right; font-weight:bold; color:#0C5B19;"></td></tr>
 
             </tbody>
         </table>

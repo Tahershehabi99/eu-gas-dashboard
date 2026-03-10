@@ -355,6 +355,22 @@
     <img src="Palissy%20Logo.png" alt="Palissy Advisors" style="height:100px; max-width:90%; object-fit:contain;">
 </div>
 <div class="page-header">
+    <span class="unit-label">Average Range:</span>
+    <select id="rangeSelector" class="unit-select" onchange="rebuildChart()">
+        <option value="3">3-year</option>
+        <option value="4">4-year</option>
+        <option value="5" selected>5-year</option>
+        <option value="6">6-year</option>
+        <option value="7">7-year</option>
+        <option value="8">8-year</option>
+        <option value="9">9-year</option>
+        <option value="10">10-year</option>
+    </select>
+    <span class="unit-label">Period:</span>
+    <select id="periodSelector" class="unit-select" onchange="rebuildChart()">
+        <option value="daily" selected>Daily</option>
+        <option value="monthly">Monthly</option>
+    </select>
     <span class="unit-label">Display units:</span>
     <select id="unitSelector" class="unit-select" onchange="convertUnits()">
         <option value="bcf" selected>Billion Cubic Feet (bcf / bcf/d)</option>
@@ -367,26 +383,10 @@
 <div class="chart-side">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
         <div class="chart-title" style="margin-bottom:0;" id="chartTitle">Percentage of storage capacity filled, Source: GIE AGSI</div>
-        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
         <select id="chartViewSelector" class="unit-select" onchange="rebuildChart()">
             <option value="pct" selected>Fill %</option>
             <option value="abs">Absolute Storage</option>
         </select>
-        <select id="periodSelector" class="unit-select" onchange="rebuildChart()">
-            <option value="daily" selected>Daily</option>
-            <option value="monthly">Monthly</option>
-        </select>
-        <select id="rangeSelector" class="unit-select" onchange="rebuildChart()">
-            <option value="3">3-year range</option>
-            <option value="4">4-year range</option>
-            <option value="5" selected>5-year range</option>
-            <option value="6">6-year range</option>
-            <option value="7">7-year range</option>
-            <option value="8">8-year range</option>
-            <option value="9">9-year range</option>
-            <option value="10">10-year range</option>
-        </select>
-        </div>
     </div>
     <canvas id="storageChart"></canvas>
     <div class="custom-legend">
@@ -408,7 +408,7 @@
         <div class="kpi-grid">
             <div class="kpi-item kpi-wide">
                 <div class="kpi-label">Storage Fill Level</div>
-                <div class="kpi-value highlight">29.40%</div>
+                <div class="kpi-value" style="font-size:26px; color:#272962;">29.40%</div>
             </div>
             <div class="kpi-item">
                 <div class="kpi-label">Gas in Storage</div>
@@ -435,7 +435,7 @@
         <h3>Fill Level Changes</h3>
         <table class="summary-table">
             <thead>
-                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="abs-change-header">Absolute</td></tr>
+                <tr><td></td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;">Change (%)</td><td style="text-align:right; font-weight:bold; font-size:11px; color:#9395A2;" id="abs-change-header">Absolute</td></tr>
             </thead>
             <tbody>
             <tr><td>1 Week</td><td style="color:#C00000; font-weight:bold; text-align:right;">-0.6%</td><td class="abs-change-cell" data-twh-change="-6.5695" style="text-align:right; font-weight:bold; color:#C00000;"></td></tr>
