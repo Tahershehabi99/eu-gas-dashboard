@@ -214,6 +214,20 @@
     .unit-select:focus {
         outline: 2px solid #272962;
     }
+    .view-select {
+        font-family: 'Gotham Book', 'Segoe UI', Calibri, sans-serif;
+        font-size: 14px;
+        color: #272962;
+        font-weight: bold;
+        border: 2px solid #272962;
+        border-radius: 6px;
+        padding: 8px 14px;
+        background: #f0f0f5;
+        cursor: pointer;
+    }
+    .view-select:focus {
+        outline: 2px solid #272962;
+    }
     /* Desktop/mobile visibility */
     .desktop-only {
         display: block;
@@ -383,8 +397,8 @@
 <div class="chart-side">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
         <div class="chart-title" style="margin-bottom:0;" id="chartTitle">Percentage of storage capacity filled, Source: GIE AGSI</div>
-        <select id="chartViewSelector" class="unit-select" onchange="rebuildChart()">
-            <option value="pct" selected>Fill %</option>
+        <select id="chartViewSelector" class="view-select" onchange="rebuildChart()">
+            <option value="pct" selected>Storage Fill %</option>
             <option value="abs">Absolute Storage</option>
         </select>
     </div>
