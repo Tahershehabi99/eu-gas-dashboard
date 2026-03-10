@@ -152,7 +152,13 @@
         .mobile-only { display: block !important; }
         .page-layout { flex-direction: column; gap: 15px; }
         .tables-side { width: 100%; }
-        .page-header { flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .page-header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 8px;
+        }
+        .ctrl-select { width: 100%; }
+        .view-select { width: 100%; }
         .chart-title { font-size: 15px; }
         .kpi-value { font-size: 16px; }
         .kpi-value.highlight { font-size: 22px; }
