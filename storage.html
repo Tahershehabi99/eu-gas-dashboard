@@ -351,7 +351,7 @@
 </style>
 </head>
 <body>
-<div style="text-align:center; margin-bottom:20px; max-width:1500px; margin-left:auto; margin-right:auto;">
+<div class="page-logo" style="text-align:center; margin-bottom:20px; max-width:1500px; margin-left:auto; margin-right:auto;">
     <img src="Palissy%20Logo.png" alt="Palissy Advisors" style="height:100px; max-width:90%; object-fit:contain;">
 </div>
 <div class="page-header">
@@ -1052,6 +1052,12 @@ function convertUnits() {
     document.getElementById('vert-storage-label').textContent = 'Storage (' + u.stockLabel + ')';
     document.getElementById('vert-inj-label').textContent = 'Inj (' + u.flowLabel + ')';
     document.getElementById('vert-wdr-label').textContent = 'Wdr (' + u.flowLabel + ')';
+}
+
+// Hide logo if embedded in iframe
+if (window.location.search.includes('embedded=1')) {
+    const logo = document.querySelector('.page-logo');
+    if (logo) logo.style.display = 'none';
 }
 
 // Initialize with default unit on page load
