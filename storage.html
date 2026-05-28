@@ -437,9 +437,8 @@
                 <div class="kpi-unit" id="kpi-storage-unit"></div>
             </div>
             <div class="kpi-item">
-                <div class="kpi-label">Current Capacity</div>
-                <div class="kpi-value" id="kpi-capacity" data-twh="1131.4655"></div>
-                <div class="kpi-unit" id="kpi-capacity-unit"></div>
+                <div class="kpi-label">5Y Seasonal Daily Δ (10d)</div>
+                <div class="kpi-value" style="font-size:26px; color:#0C5B19;">+0.30%</div>
             </div>
             <div class="kpi-item">
                 <div class="kpi-label">Injection</div>
@@ -977,7 +976,7 @@ function convertUnits() {
     document.getElementById('abs-change-header').textContent = 'Absolute Change (' + u.stockLabel + ')';
 
     // Convert KPI stock values (data-twh attribute)
-    ['kpi-storage', 'kpi-capacity'].forEach(id => {
+    ['kpi-storage'].forEach(id => {
         const el = document.getElementById(id);
         const twh = parseFloat(el.dataset.twh);
         if (!isNaN(twh)) {
@@ -985,7 +984,6 @@ function convertUnits() {
         }
     });
     document.getElementById('kpi-storage-unit').textContent = u.stockLabel;
-    document.getElementById('kpi-capacity-unit').textContent = u.stockLabel;
 
     // Convert KPI flow values (data-gwh attribute)
     ['kpi-injection', 'kpi-withdrawal'].forEach(id => {
